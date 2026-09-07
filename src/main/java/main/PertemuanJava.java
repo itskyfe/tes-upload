@@ -1,10 +1,10 @@
-package com.mycompany.mavenproject1;
+package main;
 
 import model.Buku;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MavenProject1 {
+public class PertemuanJava {
     public static void main(String[] args) {
         
         ArrayList<Buku> daftarBuku = new ArrayList<>();
@@ -41,7 +41,6 @@ public class MavenProject1 {
                     
                     daftarBuku.add(bukuBaru);
                     
-
                     System.out.println(">> Buku berhasil ditambahkan!");
                 }
                 case 2 -> {
@@ -54,9 +53,10 @@ public class MavenProject1 {
                     System.out.print("Masukkan ID Buku: ");
                     int idTarget = scanner.nextInt();
 
-                    for (Buku b : daftarBuku){
-                        if(b.idBuku == idTarget){
-                            daftarBuku.remove(b);
+                    for (int i = 0; i < daftarBuku.size(); i++) {
+                        // Menggunakan getter getIdBuku() bukan b.idBuku
+                        if (daftarBuku.get(i).getIdBuku() == idTarget) {
+                            daftarBuku.remove(i);
                             System.out.println(">> Buku berhasil dihapus!");
                             break;
                         }
@@ -66,11 +66,16 @@ public class MavenProject1 {
                     System.out.print("Masukkan ID Buku: ");
                     int idTarget = scanner.nextInt();
 
-                    for (Buku b : daftarBuku){
-                        if(b.idBuku == idTarget){
-                            System.out.println("Stok Baru: ");
-                            b.stok = scanner.nextInt();
-                            System.out.println(">> Stok berhasil diperbarui!");
+                    for (Buku b : daftarBuku) {
+                        // Menggunakan getter getIdBuku() bukan b.idBuku
+                        if (b.getIdBuku() == idTarget) {
+                            System.out.print("Masukkan Stok Baru: ");
+                            int stokBaru = scanner.nextInt();
+                            
+                            // Menggunakan setter setStok() bukan b.stok
+                            b.setStok(stokBaru); 
+                            
+                            System.out.println(">> Proses update stok selesai!");
                             break;
                         }
                     }
