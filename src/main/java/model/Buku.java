@@ -8,7 +8,7 @@ public class Buku {
     public Buku(int idBuku, String judul, int stok){
         this.idBuku = idBuku;
         this.judul = judul;
-        this.stok = stok;
+        setStok(stok);
     }
 
     public int getIdBuku() {
@@ -24,12 +24,10 @@ public class Buku {
     }
 
     public void setStok(int stok) {
+        if (stok<0){
+            System.out.println("Stok tidak valid");
+            return;
+        }
         this.stok = stok;
-    }
-    
-    public void tampilkanInfo(){
-        System.out.println("ID Buku: " + getIdBuku());
-        System.out.println("Judul Buku: " + getJudul());
-        System.out.println("Stok Buku: " + getStok());
     }
 }
